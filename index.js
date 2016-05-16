@@ -88,7 +88,7 @@ DomHandler.prototype._addDomElement = function(element){
 
 DomHandler.prototype.onopentag = function(name, attribs){
 	var element = {
-		type: name === "script" ? ElementType.Script : name === "style" ? ElementType.Style : ElementType.Tag,
+		type: name === "script" ? ElementType.Script : name === "style" ? ElementType.Style : name === "raw" ? ElementType.Raw : ElementType.Tag,
 		name: name,
 		attribs: attribs,
 		children: []
