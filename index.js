@@ -163,8 +163,8 @@ DomHandler.prototype.onraw = function(data){
 	var lastTag = this._tagStack[this._tagStack.length - 1];
 
 	if(lastTag && lastTag.type === ElementType.Raw){
-		if (typeof lastTag.data === 'undefined') {
-			lastTag.data = '';
+		if (typeof lastTag.data === "undefined") {
+			lastTag.data = "";
 		}
 		lastTag.data += data;
 		return;
