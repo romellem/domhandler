@@ -60,6 +60,11 @@ DomHandler.prototype.onclosetag = function(){
 	if(this._elementCB) this._elementCB(elem);
 };
 
+DomHandler.prototype.oncloseraw = function(){
+	var elem = this._tagStack.pop();
+	if(this._elementCB) this._elementCB(elem);
+};
+
 DomHandler.prototype._addDomElement = function(element){
 	var parent = this._tagStack[this._tagStack.length - 1];
 	var siblings = parent ? parent.children : this.dom;
@@ -148,6 +153,26 @@ DomHandler.prototype.oncomment = function(data){
 	var element = {
 		data: data,
 		type: ElementType.Comment
+	};
+
+	this._addDomElement(element);
+	this._tagStack.push(element);
+};
+
+DomHandler.prototype.onraw = function(data){
+	var lastTag = this._tagStack[this._tagStack.length - 1];
+
+	if(lastTag && lastTag.type === ElementType.Raw){
+		if (typeof lastTag.data === 'undefined') {
+			lastTag.data = '';
+		}
+		lastTag.data += data;
+		return;
+	}
+
+	var element = {
+		data: data,
+		type: ElementType.Raw
 	};
 
 	this._addDomElement(element);
