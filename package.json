@@ -18,7 +18,7 @@
     "htmlparser2"
   ],
   "dependencies": {
-    "domelementtype": "git+https://github.com/romellem/domelementtype#13de7e1"
+    "domelementtype": "git+https://github.com/romellem/domelementtype"
   },
   "devDependencies": {
     "htmlparser2": "^3.9.0",
